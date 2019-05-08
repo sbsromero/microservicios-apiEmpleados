@@ -9,6 +9,6 @@ public interface EmployeeService {
 	public List<Employee> findAll();
 	public Employee save(Employee employee);
 	public Employee getEmployeeById(Long id);
-	public Employee updateEmployee(Long id);
+	public Employee updateEmployee(Employee employee);
 	public void deleteEmployee(Long id);
 }

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.apiEmpleados.domain.Employee;
@@ -27,7 +27,7 @@ public class EmployeeController {
 		this.employeeService = employeeService;
 	}
 
-	@GetMapping
+	@GetMapping("/v1/employees")
 	public ResponseEntity<List<Employee>> findAllEmployees() {
 		return ResponseEntity.ok(employeeService.findAll());
 	}
@@ -40,6 +40,11 @@ public class EmployeeController {
 	@GetMapping("/v1/employees/{id}")
 	public ResponseEntity<Employee> findEmployeeById(@PathVariable( value = "id") Long id) {
 		return ResponseEntity.ok(employeeService.getEmployeeById(id));
+	}
+	
+	@PutMapping("/v1/employees/{id}")
+	public ResponseEntity<Employee> updateEmployeeById(@RequestBody Employee employee){
+		return ResponseEntity.ok(employeeService.updateEmployee(employee));
 	}
 	
 	@DeleteMapping("/v1/employees/{id}")

@@ -34,8 +34,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateEmployee(Long id) {
-		return null;
+	public Employee updateEmployee(Employee employee) {
+		return employeeRepository.save(employee);
 	}
 
 	@Override
